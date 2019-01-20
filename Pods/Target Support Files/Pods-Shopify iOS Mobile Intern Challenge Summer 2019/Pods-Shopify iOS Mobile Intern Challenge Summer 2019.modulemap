@@ -1,0 +1,6 @@
+framework module Pods_Shopify_iOS_Mobile_Intern_Challenge_Summer_2019 {
+  umbrella header "Pods-Shopify iOS Mobile Intern Challenge Summer 2019-umbrella.h"
+
+  export *
+  module * { export * }
+}
