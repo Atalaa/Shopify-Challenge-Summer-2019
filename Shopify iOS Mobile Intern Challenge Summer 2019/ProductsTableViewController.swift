@@ -147,7 +147,6 @@ class ProductsTableViewController: UITableViewController {
                 for collect in collectsList.collects{
                     arrayOfId.append(collect.productId)
                 }
-                print("ListofCollects --> Products id \(arrayOfId)")
                 
                 self.collectionDetails(arrayInt: arrayOfId){ (productListOfDetail, productVariant, productImg) in
                     
@@ -164,7 +163,6 @@ class ProductsTableViewController: UITableViewController {
                         self.tableView.reloadData() //UITableView.reloadData() must be used from main thread only
                     }
                 }
-                
             }
             catch let jsonErr{
                 print("Failed to fetch the collect list for a custom collection: ", jsonErr)
@@ -218,25 +216,18 @@ class ProductsTableViewController: UITableViewController {
         
         let res = s.dropLast() //remove the last comma
         
-        //lien avec lequel je travaille from now on
         let linkOfProductDetails = "https://shopicruit.myshopify.com/admin/products.json?ids=\(res)&page=1&access_token=c32313df0d0ef512ca64d5b336a0d7c6"
-        print("link: \(linkOfProductDetails) \n")
         
         let urlObj = URL(string: linkOfProductDetails)
-
         
         URLSession.shared.dataTask(with: urlObj!) { (data, response, error ) in
             do{
                 let jsonDecoder = JSONDecoder()
 
                 let products = try jsonDecoder.decode(Products.self, from: data!)
-                
-                
-
-                //faire une boucle sur le json pour chacun des 6 produits pour Aerodynamic et retrieve data
+            
                 for i in products.products{
                     
-                    print("\(i.variants) \n")
                     var x = 0
                     var imgSrc = ""
                     
@@ -265,5 +256,3 @@ class ProductsTableViewController: UITableViewController {
     
     
 }
-
-//fin

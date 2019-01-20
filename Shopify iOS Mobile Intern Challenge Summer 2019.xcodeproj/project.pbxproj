@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9064CE1D3BF7D66329E999B1 /* Pods_Shopify_iOS_Mobile_Intern_Challenge_Summer_2019.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DF882B5DD925568A3FAE539 /* Pods_Shopify_iOS_Mobile_Intern_Challenge_Summer_2019.framework */; };
 		E6F3EB56075D3A1C75FEB8B3 /* Pods_Shopify_iOS_Mobile_Intern_Challenge_Summer_2019.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C988274838982C6516469DE3 /* Pods_Shopify_iOS_Mobile_Intern_Challenge_Summer_2019.framework */; };
 		E748D4A92148151F008F0A71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E748D4A82148151F008F0A71 /* AppDelegate.swift */; };
 		E748D4AB2148151F008F0A71 /* ShopifyChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E748D4AA2148151F008F0A71 /* ShopifyChallengeViewController.swift */; };
@@ -40,7 +39,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6F3EB56075D3A1C75FEB8B3 /* Pods_Shopify_iOS_Mobile_Intern_Challenge_Summer_2019.framework in Frameworks */,
-				9064CE1D3BF7D66329E999B1 /* Pods_Shopify_iOS_Mobile_Intern_Challenge_Summer_2019.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,7 +125,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Atala Rchidi";
 				TargetAttributes = {
 					E748D4A42148151F008F0A71 = {
