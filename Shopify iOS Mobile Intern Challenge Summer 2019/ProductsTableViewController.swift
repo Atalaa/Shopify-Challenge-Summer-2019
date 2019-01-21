@@ -19,7 +19,7 @@ class ProductsTableViewController: UITableViewController {
     var myRowProduct : String = ""
     
     var productListOfDetails = [Prod]()
-    var productsPassedOver2 = [Prod]()
+    var productsPassedOver = [Prod]()
     
     var productVariants = [Var]()
     var productsPassedOverForVariants = [Var]()
@@ -41,7 +41,7 @@ class ProductsTableViewController: UITableViewController {
     
     //How many rows we want in our table view
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return productsPassedOver2.count
+        return productsPassedOver.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -54,9 +54,10 @@ class ProductsTableViewController: UITableViewController {
         
         cell.selectionStyle = .none
 
-        cell.textLabel?.numberOfLines = 0 //as many lines needed
+        //as many lines needed
+        cell.textLabel?.numberOfLines = 0
         
-        cell.textLabel?.text = "\(productsPassedOver2[indexPath.row].nameOfProduct) = \(productsPassedOverForVariants[indexPath.row].inventory) \n\(productsPassedOver2[indexPath.row].title) \n\(productsPassedOver2[indexPath.row].bodyHtml)"
+        cell.textLabel?.text = "\(productsPassedOver[indexPath.row].nameOfProduct) = \(productsPassedOverForVariants[indexPath.row].inventory) \n\(productsPassedOver[indexPath.row].title) \n\(productsPassedOver[indexPath.row].bodyHtml)"
         
         do{
             let data: Data = try Data.init(contentsOf: productsPassedOverForImage[indexPath.row].src)
@@ -71,7 +72,7 @@ class ProductsTableViewController: UITableViewController {
     
     
 /*-------------------------------------------------------------------------------------------------------------------
-     Custom Collections: trigger nanana fill with infos
+                    Custom Collections: tapping on a collection launches the Collection Details page
 ---------------------------------------------------------------------------------------------------------------------*/
     
     struct CC: Decodable{
@@ -116,7 +117,7 @@ class ProductsTableViewController: UITableViewController {
 
 
 /*--------------------------------------------------------------------------------------------------------------------
-                                                    List of collects
+                        List of collects: retrieve the list of collects in a specific collection
 ---------------------------------------------------------------------------------------------------------------------*/
     
     struct CollectsList: Decodable{
@@ -157,7 +158,7 @@ class ProductsTableViewController: UITableViewController {
                             self.activityIndicator.isHidden = true
                             self.activityIndicator.stopAnimating()
                         }
-                        self.productsPassedOver2 = productListOfDetail
+                        self.productsPassedOver = productListOfDetail
                         self.productsPassedOverForVariants = productVariant
                         self.productsPassedOverForImage = productImg
                         self.tableView.reloadData() //UITableView.reloadData() must be used from main thread only
@@ -172,7 +173,7 @@ class ProductsTableViewController: UITableViewController {
     
     
 /*--------------------------------------------------------------------------------------------------------------------
-                                                    Collection Details
+                        Collection Details: a list of every detailed product for a specific collection
 ---------------------------------------------------------------------------------------------------------------------*/
     
     struct Products: Decodable{
@@ -210,11 +211,13 @@ class ProductsTableViewController: UITableViewController {
     {
         var s = ""
         
+        //insert product ids in a link
         for id in arrayInt{
             s += "\(id),"
         }
         
-        let res = s.dropLast() //remove the last comma
+        //remove the last comma
+        let res = s.dropLast()
         
         let linkOfProductDetails = "https://shopicruit.myshopify.com/admin/products.json?ids=\(res)&page=1&access_token=c32313df0d0ef512ca64d5b336a0d7c6"
         
@@ -231,10 +234,12 @@ class ProductsTableViewController: UITableViewController {
                     var x = 0
                     var imgSrc = ""
                     
+                    //sum the total available inventory across all variants of the product
                     for j in i.variants{
                         x += j.inventory
                     }
                     
+                    //link image of the product
                     for k in i.images{
                         imgSrc += k.src.absoluteString
                     }
@@ -253,6 +258,4 @@ class ProductsTableViewController: UITableViewController {
             }
         }.resume()
     }
-    
-    
 }

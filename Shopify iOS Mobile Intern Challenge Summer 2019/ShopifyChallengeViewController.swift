@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ShopifyChallengeViewController.swift
 //  Shopify iOS Mobile Intern Challenge 2019
 //
 //  Created by atala rchidi on 2019-01-12.
