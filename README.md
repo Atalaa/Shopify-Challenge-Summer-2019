@@ -3,8 +3,7 @@ As a Shopify merchant, i present to you my new app that will help me to keep an 
 
 Please use "Shopify iOS Mobile Intern Challenge Summer 2019.xcworkspace" file to see my app working
 
-![showshopify2](https://user-images.githubusercontent.com/19721134/51807753-2b930580-2259-11e9-91aa-d8072a0ae002.gif)
-
+![showshopi](https://user-images.githubusercontent.com/19721134/51807800-bd027780-2259-11e9-81f9-c2b48ea0c04b.gif)
 
 
 
